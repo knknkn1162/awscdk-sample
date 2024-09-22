@@ -34,10 +34,11 @@ export class Ec2LbStack extends cdk.Stack {
         image: ecs.ContainerImage.fromRegistry(props.containerRegistry),
       }
     });
-
-    // Need target security group to allow all inbound traffic for
-    // ephemeral port range (when host port is 0).
-    ecsService.service.connections.allowFromAnyIpv4(EPHEMERAL_PORT_RANGE);
+    // when container.addPortMappings.hostPort is not set
+    // you can omit the hostPort (or set it to 0) while specifying a containerPort
+    // and your container automatically receives a port in the ephemeral port range
+    // this can be ommited
+    // ecsService.service.connections.allowFrom(ecsService.service, EPHEMERAL_PORT_RANGE);
 
     new cdk.CfnOutput(this, "networkLoadBalancerURL", {
       value: `http://${ecsService.loadBalancer.loadBalancerDnsName}`,
