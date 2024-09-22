@@ -7,7 +7,7 @@ import * as ec2 from 'aws-cdk-lib/aws-ec2';
 
 export const config: Ec2LbStackProps = {
   vpcCidr: "10.0.0.0/16",
-  linuxInstanceType: ec2.InstanceType.of(ec2.InstanceClass.T3, ec2.InstanceSize.SMALL),
+  instanceType: ec2.InstanceType.of(ec2.InstanceClass.BURSTABLE3, ec2.InstanceSize.MICRO),
   containerRegistry: "amazon/amazon-ecs-sample",
   env: {
     region: process.env.CDK_DEFAULT_REGION,

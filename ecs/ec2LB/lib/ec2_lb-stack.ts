@@ -6,7 +6,7 @@ import * as ecs_patterns from 'aws-cdk-lib/aws-ecs-patterns'
 
 export interface Ec2LbStackProps extends cdk.StackProps {
   readonly vpcCidr: string;
-  readonly linuxInstanceType: cdk.aws_ec2.InstanceType,
+  readonly instanceType: cdk.aws_ec2.InstanceType,
   readonly containerRegistry: string,
 }
 // dynamic port mapping
@@ -24,7 +24,7 @@ export class Ec2LbStack extends cdk.Stack {
       vpc: vpc
     });
     cluster.addCapacity('DefaultASG', {
-      instanceType: ec2.InstanceType.of(ec2.InstanceClass.BURSTABLE3, ec2.InstanceSize.MICRO)
+      instanceType: props.instanceType
     });
 
     const ecsService = new ecs_patterns.ApplicationLoadBalancedEc2Service(this, "Ec2Service", {
