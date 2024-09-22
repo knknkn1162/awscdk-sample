@@ -7,6 +7,11 @@ import * as ec2 from "aws-cdk-lib/aws-ec2";
 export const config: Ec2StackProps = {
   vpcCidr: "10.0.0.0/16",
   linuxInstanceType: ec2.InstanceType.of(ec2.InstanceClass.T3, ec2.InstanceSize.SMALL),
+  // Region is required to enable ELBv2 access logging
+  env: {
+    region: process.env.CDK_DEFAULT_REGION,
+    account: process.env.CDK_DEFAULT_ACCOUNT,
+  },
 }
 
 const app = new cdk.App();
