@@ -36,9 +36,9 @@ export class Ec2Stack extends cdk.Stack {
       protocol: elbv2.ApplicationProtocol.HTTP,
     }).addTargets("Targets", {
       port: targetPort,
-      targets: vms.map(
-        (val) => new targets.InstanceTarget(val.instance, targetPort)
-      ),
+      // targets: vms.map(
+      //   (val) => new targets.InstanceTarget(val.instance, targetPort)
+      // ),
     });
 
     vms.map(val =>

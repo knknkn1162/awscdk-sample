@@ -39,6 +39,7 @@ export class HttpAutoScalingStack extends cdk.Stack {
     });
     const tg = listener.addTargets('Targets', {
       port: targetPort,
+      // AutoScalingGroup impl IApplicationLoadBalancerTarget
       targets: [asg]
     });
 

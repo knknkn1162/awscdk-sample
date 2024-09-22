@@ -1,0 +1,11 @@
+{
+  "availability-zones:account=326755225893:region=ap-northeast-1": [
+    "ap-northeast-1a",
+    "ap-northeast-1c",
+    "ap-northeast-1d"
+  ],
+  "hosted-zone:account=326755225893:domainName=cstmize.site:region=ap-northeast-1": {
+    "Id": "/hostedzone/Z1017458301U2Y8XVRBD3",
+    "Name": "cstmize.site."
+  }
+}
